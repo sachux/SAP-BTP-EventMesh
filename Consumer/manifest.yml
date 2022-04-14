@@ -1,0 +1,24 @@
+applications:
+      - name: consumer
+        host: consumer-host
+        buildpack: https://github.com/cloudfoundry/nodejs-buildpack
+        memory: 256M
+        health-check-type: none
+        path: .
+        command: node consumer.js
+        services:
+          - event-mesh-sachin
+        env:
+          SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\"*\"}]"
+          XBEM_INPUT_X: "inputX"
+          RECONNECT_RETRY_MS : 5000
+          SAP_XBEM_BINDINGS: >
+           {
+              "inputs": {
+                "inputX": {
+                  "service": "event-mesh-sachin",
+                  "address": "queue:notification-queue",
+                  "reliable": true
+                }
+              }
+            }

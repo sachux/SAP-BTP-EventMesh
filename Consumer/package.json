@@ -1,0 +1,16 @@
+{
+    "name": "consumer",
+    "description": "Simple NodeJS Application consuming messages",
+    "version": "0.0.1",
+    "engines": {
+            "node": ">=6.9.1"
+    },
+    "dependencies": {
+            "@sap/xsenv": "1.2.8",
+            "@sap/xb-msg": ">=0.2.4",
+            "@sap/xb-msg-env": ">=0.2.1"
+    },
+    "scripts": {
+            "start": "node consumer.js"
+    }
+}
